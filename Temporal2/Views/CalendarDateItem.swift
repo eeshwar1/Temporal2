@@ -25,8 +25,11 @@ import Cocoa
             
             if isToday
             {
-                self.backColor = NSColor.gray
                 self.textColor = NSColor.green
+            }
+            else
+            {
+                self.textColor = NSColor.black
             }
             view.layer?.backgroundColor = self.backColor.cgColor
             view.layer?.borderColor = self.borderColor.cgColor
@@ -35,32 +38,35 @@ import Cocoa
         }
     }
     
-    var backColor: NSColor = NSColor.lightGray
-    var textColor: NSColor = NSColor.blue
-    var borderColor: NSColor = NSColor.white
+    var backColor: NSColor = NSColor.windowBackgroundColor
+    var textColor: NSColor = NSColor.black
+    var borderColor: NSColor = NSColor.darkGray
     
     @IBInspectable var titleItem: Bool = false
     {
         didSet {
+          
+                (self.backColor,self.textColor) = titleItem ? (NSColor.orange
+                    , NSColor.black) : (NSColor.windowBackgroundColor, NSColor.black)
+                
             
             
-            (self.backColor,self.textColor) = titleItem ? (NSColor.orange
-                , NSColor.white) : (NSColor.white, NSColor.darkGray)
-            
-           
             
             view.layer?.backgroundColor = self.backColor.cgColor
             view.layer?.borderColor = self.borderColor.cgColor
-            view.layer?.borderWidth = 1.0
+            view.layer?.borderWidth = 0.0
             self.textField?.textColor = self.textColor
             
         }
     }
+    
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         view.wantsLayer = true
+
         
         
     }

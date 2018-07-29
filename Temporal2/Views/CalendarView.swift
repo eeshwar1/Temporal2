@@ -90,12 +90,12 @@ class CalendarView: NSView {
     private func configureCollectionView() {
         
         let flowLayout = NSCollectionViewFlowLayout()
-        flowLayout.itemSize = NSSize(width: 30.0,
-                                     height: 30.0)
-        flowLayout.sectionInset = NSEdgeInsets(top: 2.0,
-                                               left: 2.0,
-                                               bottom: 2.0,
-                                               right: 2.0)
+        flowLayout.itemSize = NSSize(width: 25.0,
+                                     height: 25.0)
+        flowLayout.sectionInset = NSEdgeInsets(top: 1.0,
+                                               left: 1.0,
+                                               bottom: 1.0,
+                                               right: 1.0)
         flowLayout.minimumInteritemSpacing = 0.25
         flowLayout.minimumLineSpacing = 0.25
         
@@ -322,6 +322,10 @@ extension CalendarView: NSCollectionViewDataSource {
                 self.calendarMonth.year == self.todayYear
             {
                 calendarDateItem.isToday = true
+            }
+            else
+            {
+                calendarDateItem.isToday = false
             }
         }
         

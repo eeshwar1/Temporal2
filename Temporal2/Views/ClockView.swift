@@ -20,7 +20,7 @@ class ClockView: NSView {
     var timeMinutes: CGFloat = 0
     var timeSeconds: CGFloat = 0
     
-    var borderColor: NSColor = NSColor.darkGray
+    var borderColor: NSColor = NSColor.yellow
     var backgroundColor: NSColor = NSColor.black
     var centerPinColor: NSColor = NSColor.gray
     var centerPinBorderColor: NSColor = NSColor.yellow
@@ -31,8 +31,8 @@ class ClockView: NSView {
     var clockTheme: String = "Theme 1"
 
     
-    fileprivate let clockThemeColors = ["Theme 1": ["background": NSColor.black,
-                                                    "border": NSColor.darkGray,
+    static fileprivate let clockThemeColors = ["Theme 1": ["background":        NSColor.black,
+                                                    "border": NSColor.yellow,
                                                     "hours": NSColor.green,
                                                     "minutes":NSColor.orange,
                                                     "seconds": NSColor.red,
@@ -54,11 +54,16 @@ class ClockView: NSView {
                                                     "centerPinBorder": NSColor.black]]
     
     
-    func getThemes() -> [String]
+    class func getThemes() -> [String]
     {
         return Array(clockThemeColors.keys).sorted()
     }
     
+    required init?(coder decoder: NSCoder) {
+        
+        super.init(coder: decoder)
+        self.setTheme(theme: "Theme 1")
+    }
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
@@ -84,12 +89,16 @@ class ClockView: NSView {
         self.minutesHandLength = 0.4 * clockFaceRect.height
         self.secondsHandLength = 0.45 * clockFaceRect.height
         
-        let centerPoint = CGPoint(x: clockFaceRect.midX, y: clockFaceRect.midY)
+        let centerPoint = CGPoint(x: clockFaceRect.midX,
+                                  y: clockFaceRect.midY)
         
         let faceRadius = clockFaceRect.width / 2
      
         
-        let points = circleCircumferencePoints(sides: 60, x: centerPoint.x, y: centerPoint.y, radius: faceRadius)
+        let points = circleCircumferencePoints(sides: 60,
+                                               x: centerPoint.x,
+                                               y: centerPoint.y,
+                                               radius: faceRadius)
         
         borderColor.setStroke()
         
@@ -175,7 +184,7 @@ class ClockView: NSView {
     {
         
         self.clockTheme = theme
-        let themeColors = clockThemeColors[self.clockTheme]!
+        let themeColors = ClockView.clockThemeColors[clockTheme]!
         
         self.backgroundColor = themeColors["background"]!
         self.borderColor = themeColors["border"]!
@@ -184,6 +193,7 @@ class ClockView: NSView {
         self.secondsHandColor = themeColors["seconds"]!
         self.centerPinColor = themeColors["centerPin"]!
         self.centerPinBorderColor = themeColors["centerPinBorder"]!
+        self.setNeedsDisplay(bounds)
         
     }
     

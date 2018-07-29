@@ -8,6 +8,8 @@
 
 import Cocoa
 
+
+
 class TemporalView: NSView {
 
     @IBOutlet weak var clockLabel: NSTextField!
@@ -21,7 +23,7 @@ class TemporalView: NSView {
         
         super.init(coder: decoder)
      
-        self.calendarView = CalendarView(frame: NSMakeRect(0, 0, 270, 310))
+        self.calendarView = CalendarView(frame: NSMakeRect(0, 0, 225, 310))
     
     }
     
@@ -29,7 +31,7 @@ class TemporalView: NSView {
        
         super.init(frame: frameRect)
         
-        let cView = CalendarView(frame: NSMakeRect(0, 0, 270, 310))
+        let cView = CalendarView(frame: NSMakeRect(0, 0, 225, 310))
         
         self.calendarView.addSubview(cView)
     }
@@ -41,6 +43,13 @@ class TemporalView: NSView {
         self.clockLabel.stringValue = time.timeString
         
       
+    }
+    
+    func setTheme(theme: String)
+    {
+        let defaults = UserDefaults.standard
+        let theme =  defaults.string(forKey: "Theme") ?? DEFAULT_THEME
+        self.clockView.setTheme(theme: theme)
     }
     
 }
