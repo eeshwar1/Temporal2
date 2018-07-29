@@ -50,7 +50,7 @@
                             <rect key="frame" x="104" y="-11" width="58" height="27"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="TimeLabel" id="Oe2-Ju-TIE">
                                 <font key="font" size="12" name="AvenirNextCondensed-Bold"/>
-                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="textColor" name="windowFrameTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
