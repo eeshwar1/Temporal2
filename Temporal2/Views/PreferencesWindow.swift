@@ -17,6 +17,10 @@ class PreferencesWindow: NSWindowController, NSComboBoxDelegate, NSWindowDelegat
     @IBOutlet weak var themeCombo: NSComboBox!
     @IBOutlet weak var clockView: ClockView!
     
+    @IBOutlet weak var timeformatSegmentedControl: NSSegmentedControl!
+    
+    
+    
     var delegate: PreferencesWindowDelegate?
     
     override var windowNibName: NSNib.Name?{
@@ -25,6 +29,8 @@ class PreferencesWindow: NSWindowController, NSComboBoxDelegate, NSWindowDelegat
     }
     override func windowDidLoad() {
         super.windowDidLoad()
+        
+        
 
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
         
@@ -42,6 +48,10 @@ class PreferencesWindow: NSWindowController, NSComboBoxDelegate, NSWindowDelegat
         let defaults = UserDefaults.standard
         let theme = defaults.string(forKey: "Theme") ?? DEFAULT_THEME
         themeCombo.selectItem(withObjectValue: theme)
+        
+        let timeFormat = defaults.string(forKey: "Time Format") ?? DEFAULT_TIME_FORMAT
+        timeformatSegmentedControl.selectedSegment = timeFormat == "12h" ? 0 : 1
+        
         
     }
     
@@ -63,4 +73,15 @@ class PreferencesWindow: NSWindowController, NSComboBoxDelegate, NSWindowDelegat
         let defaults = UserDefaults.standard
         defaults.setValue(themeCombo.stringValue, forKey: "Theme")
     }
+    
+    // Actions
+    
+    @IBAction func clockStyleChanged(_ sender: AnyObject)
+    {
+        let defaults = UserDefaults.standard
+        let timeFormatStyle = timeformatSegmentedControl.selectedSegment == 0 ? "12h" : "24h"
+        defaults.setValue(timeFormatStyle, forKey: "Time Format")
+        
+    }
+    
 }

@@ -8,6 +8,8 @@
 
 import Cocoa
 
+
+
 @IBDesignable
 
 class ClockView: NSView {
@@ -28,24 +30,24 @@ class ClockView: NSView {
     var minutesHandColor: NSColor = NSColor.orange
     var secondsHandColor: NSColor = NSColor.red
     
-    var clockTheme: String = "Theme 1"
+    var clockTheme: String = "Night"
 
     
-    static fileprivate let clockThemeColors = ["Theme 1": ["background":        NSColor.black,
+    static fileprivate let clockThemeColors = ["Night": ["background":        NSColor.black,
                                                     "border": NSColor.yellow,
                                                     "hours": NSColor.green,
                                                     "minutes":NSColor.orange,
                                                     "seconds": NSColor.red,
                                                     "centerPin": NSColor.gray,
                                                     "centerPinBorder": NSColor.darkGray],
-                                        "Theme 2": ["background": NSColor.gray,
+                                        "Rainy": ["background": NSColor.gray,
                                                     "border": NSColor.darkGray,
                                                     "hours": NSColor.blue,
                                                     "minutes": NSColor.purple,
                                                     "seconds": NSColor.cyan,
                                                     "centerPin": NSColor.darkGray,
                                                     "centerPinBorder": NSColor.black],
-                                        "Theme 3": ["background": NSColor.white,
+                                        "Daylight": ["background": NSColor.white,
                                                     "border": NSColor.gray,
                                                     "hours": NSColor.darkGray,
                                                     "minutes": NSColor.cyan,
@@ -62,9 +64,10 @@ class ClockView: NSView {
     required init?(coder decoder: NSCoder) {
         
         super.init(coder: decoder)
-        self.setTheme(theme: "Theme 1")
+        self.setTheme(theme: "Night")
     }
     override func draw(_ dirtyRect: NSRect) {
+        
         super.draw(dirtyRect)
 
         // Drawing code here.
@@ -184,16 +187,20 @@ class ClockView: NSView {
     {
         
         self.clockTheme = theme
-        let themeColors = ClockView.clockThemeColors[clockTheme]!
         
-        self.backgroundColor = themeColors["background"]!
-        self.borderColor = themeColors["border"]!
-        self.hoursHandColor = themeColors["hours"]!
-        self.minutesHandColor = themeColors["minutes"]!
-        self.secondsHandColor = themeColors["seconds"]!
-        self.centerPinColor = themeColors["centerPin"]!
-        self.centerPinBorderColor = themeColors["centerPinBorder"]!
-        self.setNeedsDisplay(bounds)
+        let themeColors = ClockView.clockThemeColors[clockTheme]
+        
+        if let themeColors = themeColors
+        {
+            self.backgroundColor = themeColors["background"]!
+            self.borderColor = themeColors["border"]!
+            self.hoursHandColor = themeColors["hours"]!
+            self.minutesHandColor = themeColors["minutes"]!
+            self.secondsHandColor = themeColors["seconds"]!
+            self.centerPinColor = themeColors["centerPin"]!
+            self.centerPinBorderColor = themeColors["centerPinBorder"]!
+            self.setNeedsDisplay(bounds)
+        }
         
     }
     

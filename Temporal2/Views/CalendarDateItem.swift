@@ -25,11 +25,11 @@ import Cocoa
             
             if isToday
             {
-                self.textColor = NSColor.green
+                self.textColor = NSColor.red
             }
             else
             {
-                self.textColor = NSColor.black
+                self.textColor = NSColor.windowFrameTextColor
             }
             view.layer?.backgroundColor = self.backColor.cgColor
             view.layer?.borderColor = self.borderColor.cgColor
@@ -39,15 +39,15 @@ import Cocoa
     }
     
     var backColor: NSColor = NSColor.windowBackgroundColor
-    var textColor: NSColor = NSColor.black
-    var borderColor: NSColor = NSColor.darkGray
+    var textColor: NSColor = NSColor.windowFrameTextColor
+    var borderColor: NSColor = NSColor.windowBackgroundColor
     
     @IBInspectable var titleItem: Bool = false
     {
         didSet {
           
                 (self.backColor,self.textColor) = titleItem ? (NSColor.orange
-                    , NSColor.black) : (NSColor.windowBackgroundColor, NSColor.black)
+                    , NSColor.windowFrameTextColor) : (NSColor.windowBackgroundColor, NSColor.windowFrameTextColor)
                 
             
             
