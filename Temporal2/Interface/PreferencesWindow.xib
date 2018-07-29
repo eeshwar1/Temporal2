@@ -9,13 +9,14 @@
             <connections>
                 <outlet property="clockView" destination="bZe-w5-HJz" id="s7F-Un-Ohq"/>
                 <outlet property="themeCombo" destination="Bep-IX-D0E" id="qyc-5P-c0a"/>
+                <outlet property="timeformatSegmentedControl" destination="LgX-A0-kPE" id="NyO-d5-KZ3"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+        <window title="Temporal2 Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="480" height="270"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
@@ -48,6 +49,29 @@
                         <rect key="frame" x="20" y="35" width="166" height="165"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
+                    <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LgX-A0-kPE">
+                        <rect key="frame" x="300" y="220" width="151" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="vv5-6V-4uf">
+                            <font key="font" metaFont="system"/>
+                            <segments>
+                                <segment label="12 Hour"/>
+                                <segment label="24 Hour" selected="YES" tag="1"/>
+                            </segments>
+                        </segmentedCell>
+                        <connections>
+                            <action selector="clockStyleChanged:" target="-2" id="aHn-D5-UfY"/>
+                        </connections>
+                    </segmentedControl>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fkg-b2-sNI">
+                        <rect key="frame" x="215" y="225" width="81" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Time Format" id="JOw-vV-0hR">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <connections>

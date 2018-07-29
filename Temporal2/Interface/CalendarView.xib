@@ -54,9 +54,9 @@
                     </scroller>
                 </scrollView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xRc-y7-eAs">
-                    <rect key="frame" x="76" y="295" width="122" height="28"/>
+                    <rect key="frame" x="65" y="295" width="156" height="27"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Month Year" id="EXM-5t-qAh">
-                        <font key="font" size="15" name="AvenirNextCondensed-Bold"/>
+                        <font key="font" size="13" name="AvenirNextCondensed-Bold"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -124,14 +124,14 @@
                 <constraint firstItem="ama-2D-bKx" firstAttribute="baseline" secondItem="YD3-v2-l0A" secondAttribute="baseline" id="5Eq-Fz-nae"/>
                 <constraint firstItem="mxD-cS-p9y" firstAttribute="top" secondItem="Ssf-23-4oa" secondAttribute="top" constant="4" id="6eQ-Wd-MOX"/>
                 <constraint firstItem="b1e-P5-w1j" firstAttribute="trailing" secondItem="TEk-Vq-1rK" secondAttribute="trailing" id="CL8-q3-Gzo"/>
-                <constraint firstItem="xRc-y7-eAs" firstAttribute="leading" secondItem="mxD-cS-p9y" secondAttribute="trailing" constant="18" id="FHh-cd-VQi"/>
+                <constraint firstItem="xRc-y7-eAs" firstAttribute="leading" secondItem="mxD-cS-p9y" secondAttribute="trailing" constant="7" id="FHh-cd-VQi"/>
                 <constraint firstItem="9px-Ma-DcE" firstAttribute="leading" secondItem="TEk-Vq-1rK" secondAttribute="leading" id="Gf0-Vr-TeO"/>
                 <constraint firstItem="mxD-cS-p9y" firstAttribute="leading" secondItem="9px-Ma-DcE" secondAttribute="leading" id="HnD-sm-cL7"/>
                 <constraint firstItem="TEk-Vq-1rK" firstAttribute="top" secondItem="9px-Ma-DcE" secondAttribute="bottom" constant="6" id="Ilf-Eq-ew7"/>
                 <constraint firstItem="9px-Ma-DcE" firstAttribute="baseline" secondItem="xRc-y7-eAs" secondAttribute="firstBaseline" id="KTJ-5g-HMe"/>
                 <constraint firstItem="YD3-v2-l0A" firstAttribute="trailing" secondItem="b1e-P5-w1j" secondAttribute="trailing" id="Lzj-ml-sV3"/>
                 <constraint firstItem="ama-2D-bKx" firstAttribute="baseline" secondItem="mxD-cS-p9y" secondAttribute="baseline" id="MZA-A3-d0O"/>
-                <constraint firstItem="YD3-v2-l0A" firstAttribute="leading" secondItem="xRc-y7-eAs" secondAttribute="trailing" constant="31" id="OLY-xu-rSB"/>
+                <constraint firstItem="YD3-v2-l0A" firstAttribute="leading" secondItem="xRc-y7-eAs" secondAttribute="trailing" constant="8" id="OLY-xu-rSB"/>
                 <constraint firstItem="YD3-v2-l0A" firstAttribute="leading" secondItem="b1e-P5-w1j" secondAttribute="leading" id="PvN-Bk-zvc"/>
                 <constraint firstItem="mxD-cS-p9y" firstAttribute="leading" secondItem="Ssf-23-4oa" secondAttribute="leading" constant="15" id="TNG-t8-1zw"/>
                 <constraint firstItem="mxD-cS-p9y" firstAttribute="centerX" secondItem="9px-Ma-DcE" secondAttribute="centerX" id="ZTI-ou-Pfg"/>
