@@ -8,16 +8,21 @@
 
 import Cocoa
 
+let DEFAULT_THEME = "Theme 2"
+
 struct Time {
     var hours: Int
     var minutes: Int
     var seconds: Int
     var timeString: String
 }
-class StatusMenuController: NSObject {
+class StatusMenuController: NSObject, PreferencesWindowDelegate {
     
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var temporalView: TemporalView!
+    
+    var preferencesWindow: PreferencesWindow!
+    
     
     var timer = Timer()
     
@@ -26,6 +31,10 @@ class StatusMenuController: NSObject {
     
     var temporalMenuItem: NSMenuItem!
     
+    @IBAction func preferencesClicked(_ sender: Any) {
+        
+        preferencesWindow.showWindow(nil)
+    }
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     @IBAction func quitClicked(_ sender: Any) {
@@ -44,7 +53,7 @@ class StatusMenuController: NSObject {
         temporalMenuItem.view = temporalView
         
         // Set timer format
-        timeFormatter.dateFormat = "HH:mm:ss"
+        timeFormatter.dateFormat = "HH:mm:ss a"
         dateFormatter.dateFormat = "MM/dd/yyyy"
         
         showTime()
@@ -59,6 +68,9 @@ class StatusMenuController: NSObject {
         // add timer to RunLoop for handling during event loops
         RunLoop.current.add(timer, forMode: .eventTrackingRunLoopMode)
         
+        preferencesWindow = PreferencesWindow()
+        preferencesWindow.delegate = self
+        
      
     }
     
@@ -66,7 +78,6 @@ class StatusMenuController: NSObject {
     {
         
         let date = Date()
-        
         
         let calendar = Calendar.current
         
@@ -81,6 +92,17 @@ class StatusMenuController: NSObject {
         temporalView.setTime(time: Time(hours: hours, minutes: minutes, seconds: seconds, timeString: currentTime))
         
         
+    }
+    
+    func preferencesDidUpdate() {
+        updateWindow()
+    }
+    
+    func updateWindow()
+    {
+        let defaults = UserDefaults.standard
+        let theme = defaults.string(forKey: "Theme") ?? DEFAULT_THEME
+        self.temporalView.setTheme(theme: theme)
     }
 
 }
