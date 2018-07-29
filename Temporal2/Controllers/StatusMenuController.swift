@@ -8,7 +8,8 @@
 
 import Cocoa
 
-let DEFAULT_THEME = "Theme 2"
+let DEFAULT_THEME = "Night"
+let DEFAULT_TIME_FORMAT = "12h"
 
 struct Time {
     var hours: Int
@@ -24,6 +25,8 @@ class StatusMenuController: NSObject, PreferencesWindowDelegate {
     var preferencesWindow: PreferencesWindow!
     
     
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    
     var timer = Timer()
     
     let timeFormatter = DateFormatter()
@@ -35,7 +38,8 @@ class StatusMenuController: NSObject, PreferencesWindowDelegate {
         
         preferencesWindow.showWindow(nil)
     }
-    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    
+    
     
     @IBAction func quitClicked(_ sender: Any) {
         
@@ -44,6 +48,8 @@ class StatusMenuController: NSObject, PreferencesWindowDelegate {
     
     override func awakeFromNib()
     {
+        
+        let defaults = UserDefaults.standard
         let icon = NSImage(named: NSImage.Name(rawValue: "Temporal-Icon"))
         // icon?.isTemplate = true
         statusItem.image = icon
@@ -53,7 +59,10 @@ class StatusMenuController: NSObject, PreferencesWindowDelegate {
         temporalMenuItem.view = temporalView
         
         // Set timer format
-        timeFormatter.dateFormat = "HH:mm:ss a"
+        
+        let timeFormat = defaults.string(forKey: "Time Format") ?? DEFAULT_TIME_FORMAT
+        timeFormatter.dateFormat = timeFormat == "12h" ? "HH:mm:ss a": "HH:mm:ss"
+        
         dateFormatter.dateFormat = "MM/dd/yyyy"
         
         showTime()
@@ -71,7 +80,9 @@ class StatusMenuController: NSObject, PreferencesWindowDelegate {
         preferencesWindow = PreferencesWindow()
         preferencesWindow.delegate = self
         
-     
+        
+        let theme = defaults.string(forKey: "Theme") ?? DEFAULT_THEME
+        self.temporalView.setTheme(theme: theme)
     }
     
     @objc func showTime()
@@ -91,6 +102,8 @@ class StatusMenuController: NSObject, PreferencesWindowDelegate {
         
         temporalView.setTime(time: Time(hours: hours, minutes: minutes, seconds: seconds, timeString: currentTime))
         
+        updateWindow()
+        
         
     }
     
@@ -103,6 +116,9 @@ class StatusMenuController: NSObject, PreferencesWindowDelegate {
         let defaults = UserDefaults.standard
         let theme = defaults.string(forKey: "Theme") ?? DEFAULT_THEME
         self.temporalView.setTheme(theme: theme)
+        
+        let timeFormat = defaults.string(forKey: "Time Format") ?? DEFAULT_TIME_FORMAT
+        timeFormatter.dateFormat = timeFormat == "12h" ? "HH:mm:ss a": "HH:mm:ss"
     }
 
 }
