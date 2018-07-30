@@ -1,6 +1,6 @@
 //
-//  CollectionViewItem.swift
-//  Temporal
+//  CalendarDateItem.swift
+//  Temporal2
 //
 //  Created by Venky Venkatakrishnan on 6/23/18.
 //  Copyright © 2018 Venky UL. All rights reserved.

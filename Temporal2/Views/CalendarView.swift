@@ -1,6 +1,6 @@
 //
 //  CalendarView.swift
-//  Temporal
+//  Temporal2
 //
 //  Created by Venky Venkatakrishnan on 7/23/18.
 //  Copyright © 2018 Venky UL. All rights reserved.
@@ -26,7 +26,7 @@ class CalendarView: NSView {
     
     fileprivate var dates: [Int] = Array(1...31)
     
-    fileprivate var dayNames: [String] = ["S","M","T","W","T","F","S"]
+    fileprivate var dayNames: [String] = ["Su","Mo","Tu","We","Th","Fr","Sa"]
     
     var datesPerSection = 7
     
@@ -90,8 +90,12 @@ class CalendarView: NSView {
     private func configureCollectionView() {
         
         let flowLayout = NSCollectionViewFlowLayout()
-        flowLayout.itemSize = NSSize(width: 25.0,
-                                     height: 25.0)
+        
+        let itemWidth = collectionView.frame.width / 11
+        let itemHeight = collectionView.frame.height / 11
+    
+        flowLayout.itemSize = NSSize(width: itemWidth,
+                                     height: itemHeight)
         flowLayout.sectionInset = NSEdgeInsets(top: 1.0,
                                                left: 1.0,
                                                bottom: 1.0,

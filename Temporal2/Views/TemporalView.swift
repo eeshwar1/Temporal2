@@ -23,7 +23,7 @@ class TemporalView: NSView {
         
         super.init(coder: decoder)
      
-        self.calendarView = CalendarView(frame: NSMakeRect(0, 0, 225, 310))
+        self.calendarView = CalendarView(frame: NSMakeRect(0, 0, 200, 200))
     
     }
     
@@ -31,7 +31,7 @@ class TemporalView: NSView {
        
         super.init(frame: frameRect)
         
-        let cView = CalendarView(frame: NSMakeRect(0, 0, 225, 310))
+        let cView = CalendarView(frame: NSMakeRect(0, 0, 200, 200))
         
         self.calendarView.addSubview(cView)
     }
@@ -41,6 +41,8 @@ class TemporalView: NSView {
         self.clockView.setTime(hours: time.hours, minutes: time.minutes, seconds: time.seconds)
         
         self.clockLabel.stringValue = time.timeString
+        
+        self.calendarView.showDate()
         
       
     }

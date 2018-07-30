@@ -1,6 +1,6 @@
 //
 //  ClockView.swift
-//  Temporal
+//  Temporal2
 //
 //  Created by Venky Venkatakrishnan on 6/9/18.
 //  Copyright © 2018 Venky UL. All rights reserved.
@@ -186,12 +186,9 @@ class ClockView: NSView {
     func setTheme(theme: String)
     {
         
-        self.clockTheme = theme
-        
-        let themeColors = ClockView.clockThemeColors[clockTheme]
-        
-        if let themeColors = themeColors
+        if let themeColors = ClockView.clockThemeColors[clockTheme]
         {
+            self.clockTheme = theme
             self.backgroundColor = themeColors["background"]!
             self.borderColor = themeColors["border"]!
             self.hoursHandColor = themeColors["hours"]!
@@ -200,7 +197,9 @@ class ClockView: NSView {
             self.centerPinColor = themeColors["centerPin"]!
             self.centerPinBorderColor = themeColors["centerPinBorder"]!
             self.setNeedsDisplay(bounds)
+        
         }
+        
         
     }
     
