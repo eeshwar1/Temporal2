@@ -61,7 +61,7 @@ class StatusMenuController: NSObject, PreferencesWindowDelegate {
         // Set timer format
         
         let timeFormat = defaults.string(forKey: "Time Format") ?? DEFAULT_TIME_FORMAT
-        timeFormatter.dateFormat = timeFormat == "12h" ? "HH:mm:ss a": "HH:mm:ss"
+        timeFormatter.dateFormat = timeFormat == "12h" ? "hh:mm:ss a": "HH:mm:ss"
         
         dateFormatter.dateFormat = "MM/dd/yyyy"
         
@@ -118,7 +118,7 @@ class StatusMenuController: NSObject, PreferencesWindowDelegate {
         self.temporalView.setTheme(theme: theme)
         
         let timeFormat = defaults.string(forKey: "Time Format") ?? DEFAULT_TIME_FORMAT
-        timeFormatter.dateFormat = timeFormat == "12h" ? "HH:mm:ss a": "HH:mm:ss"
+        timeFormatter.dateFormat = timeFormat == "12h" ? "hh:mm:ss a": "HH:mm:ss"
     }
 
 }
