@@ -43,13 +43,19 @@ class CalendarView: NSView {
         
         super.init(coder: decoder)        
         
+        // print("Init coder")
         commonInit()
         
+        
+        
     }
+    
     required override init(frame frameRect: NSRect) {
+        
         
         super.init(frame: frameRect)
         
+        // print("Init frame")
         commonInit()
     }
     
@@ -57,7 +63,9 @@ class CalendarView: NSView {
     {
         Bundle.main.loadNibNamed(NSNib.Name(rawValue: "CalendarView"), owner: self, topLevelObjects: nil)
         
-        let contentFrame = NSMakeRect(0, 0, frame.size.width, frame.size.height)
+        // print("Frame: \(frame.size.width) x \(frame.size.height)")
+        
+        let contentFrame = NSMakeRect(0, 0, frame.size.width, frame.size.height )
         
         self.calendarView.frame = contentFrame
         
@@ -79,10 +87,12 @@ class CalendarView: NSView {
         self.todayMonth = calendar.component(.month, from: date)
         self.todayYear = calendar.component(.year, from: date)
         
+       
         self.calendarMonth.setMonthAndYear(month: self.todayMonth,
                                            year: self.todayYear)
         
         lblMonthName.stringValue = calendarMonth.monthAndYear
+        
         
     }
 
@@ -91,8 +101,11 @@ class CalendarView: NSView {
         
         let flowLayout = NSCollectionViewFlowLayout()
         
-        let itemWidth = collectionView.frame.width / 11
-        let itemHeight = collectionView.frame.height / 11
+        // let itemWidth = collectionView.frame.width / 11
+        // let itemHeight = collectionView.frame.height / 11
+        
+        let itemWidth = 25
+        let itemHeight = 25
     
         flowLayout.itemSize = NSSize(width: itemWidth,
                                      height: itemHeight)
@@ -169,6 +182,8 @@ class CalendarView: NSView {
         self.collectionView.reloadData()
         
         lblMonthName.stringValue = calendarMonth.monthAndYear
+        
+        
     }
     
     @IBAction func clickPrevYear(_ sender: Any) {
@@ -197,6 +212,7 @@ class CalendarView: NSView {
         self.collectionView.reloadData()
         
         lblMonthName.stringValue = calendarMonth.monthAndYear
+        
     }
     
     @IBAction func clickNextYear(_ sender: Any) {
@@ -228,6 +244,8 @@ class CalendarView: NSView {
         self.collectionView.reloadData()
         
         lblMonthName.stringValue = calendarMonth.monthAndYear
+    
+        
     }
     
     @IBAction func clickToday(_ sender: Any)
@@ -244,6 +262,7 @@ class CalendarView: NSView {
         self.collectionView.reloadData()
         
         lblMonthName.stringValue = calendarMonth.monthAndYear
+        
     }
 }
 

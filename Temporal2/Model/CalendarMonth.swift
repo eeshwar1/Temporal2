@@ -32,6 +32,7 @@ class CalendarMonth: NSObject {
         let month = calendar.component(.month, from: date)
         let year = calendar.component(.year, from: date)
         self.setMonthAndYear(month: month, year: year)
+        
     
         
     }
@@ -50,6 +51,7 @@ class CalendarMonth: NSObject {
     {
         self.month = month
         self.year = year
+       
         self.fillCalendar()
     }
     

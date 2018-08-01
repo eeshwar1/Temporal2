@@ -8,14 +8,14 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CalendarView" customModule="Temporal2" customModuleProvider="target">
             <connections>
-                <outlet property="buttonNextMonth" destination="b1e-P5-w1j" id="Gov-ol-B9b"/>
-                <outlet property="buttonNextYear" destination="YD3-v2-l0A" id="xBu-nK-gbL"/>
-                <outlet property="buttonPrevMonth" destination="9px-Ma-DcE" id="zCg-Wu-ayU"/>
+                <outlet property="buttonNextMonth" destination="b1e-P5-w1j" id="0Wk-ZQ-FKq"/>
+                <outlet property="buttonNextYear" destination="YD3-v2-l0A" id="ReN-gx-e0b"/>
+                <outlet property="buttonPrevMonth" destination="9px-Ma-DcE" id="PyC-pJ-yPT"/>
                 <outlet property="buttonPrevYear" destination="mxD-cS-p9y" id="J69-2W-x36"/>
                 <outlet property="buttonToday" destination="ama-2D-bKx" id="H1V-vo-3zW"/>
                 <outlet property="calendarView" destination="Ssf-23-4oa" id="hOv-dH-QRq"/>
                 <outlet property="collectionView" destination="OgM-Tc-75U" id="NRz-tS-yDk"/>
-                <outlet property="lblMonthName" destination="xRc-y7-eAs" id="vFd-dP-qGY"/>
+                <outlet property="lblMonthName" destination="xRc-y7-eAs" id="4Av-dv-axu"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
