@@ -154,6 +154,7 @@
 				TargetAttributes = {
 					65E5500C2104AB6700FE56B5 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -348,7 +349,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.venkyul.Temporal2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -367,7 +368,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.venkyul.Temporal2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
