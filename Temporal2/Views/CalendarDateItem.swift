@@ -25,12 +25,9 @@ import Cocoa
             
             if isToday
             {
-                self.textColor = NSColor.red
+                self.textColor = NSColor.white
             }
-            else
-            {
-                self.textColor = NSColor.windowFrameTextColor
-            }
+        
             view.layer?.backgroundColor = self.backColor.cgColor
             view.layer?.borderColor = self.borderColor.cgColor
             self.textField?.textColor = self.textColor
@@ -38,20 +35,45 @@ import Cocoa
         }
     }
     
-    var backColor: NSColor = NSColor.windowBackgroundColor
+    
+  
+    
+    var otherMonthDate: Bool = false
+    {
+        didSet {
+            
+            
+            
+            self.textColor = otherMonthDate ? NSColor.disabledControlTextColor : NSColor.windowFrameTextColor
+            
+            view.layer?.backgroundColor = self.backColor.cgColor
+            view.layer?.borderColor = self.borderColor.cgColor
+            self.textField?.textColor = self.textColor
+            
+        }
+        
+    }
+
+    var backColor: NSColor = NSColor.lightGray
     var textColor: NSColor = NSColor.windowFrameTextColor
-    var borderColor: NSColor = NSColor.windowBackgroundColor
+    var borderColor: NSColor = NSColor.black
     
     @IBInspectable var titleItem: Bool = false
     {
         didSet {
           
-                (self.backColor,self.textColor) = titleItem ? (NSColor.orange
-                    , NSColor.windowFrameTextColor) : (NSColor.windowBackgroundColor, NSColor.windowFrameTextColor)
+            if titleItem {
                 
-            
-            
-            
+                (self.backColor,self.textColor) = (NSColor.orange
+                    , NSColor.windowFrameTextColor)
+            }
+            else
+            {
+                (self.backColor,self.textColor) = (NSColor.windowFrameColor
+                    , NSColor.windowFrameTextColor)
+                
+            }
+                
             view.layer?.backgroundColor = self.backColor.cgColor
             view.layer?.borderColor = self.borderColor.cgColor
             view.layer?.borderWidth = 0.0
@@ -66,6 +88,8 @@ import Cocoa
         super.viewDidLoad()
         
         view.wantsLayer = true
+        
+        view.layer?.cornerRadius = view.frame.height / 20
 
         
         

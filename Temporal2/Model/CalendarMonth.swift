@@ -20,6 +20,8 @@ class CalendarMonth: NSObject {
     var firstDateOfMonth: Date = Date()
     var lastDateOfMonth: Date = Date()
     var dates: [Int] = []
+    var prevMonthDates: [Int] = []
+    var nextMonthDates: [Int] = []
     var lastDayOfMonth: Int = 31
     var firstDayOfMonthWeekDay: Int = 1
     var lastDayOfMonthWeekDay: Int = 1
@@ -51,6 +53,7 @@ class CalendarMonth: NSObject {
     {
         self.month = month
         self.year = year
+
        
         self.fillCalendar()
     }
@@ -65,9 +68,11 @@ class CalendarMonth: NSObject {
         dateComponents.month = self.month
         dateComponents.year = self.year
         
+        // print("month = \(String(describing: self.month))")
+        
         self.firstDateOfMonth = calendar.date(from: dateComponents)!
         
-        dateComponents.month! += 1
+        dateComponents.month! = self.month!  + 1
         
         dateComponents.day = 0
         
@@ -77,6 +82,32 @@ class CalendarMonth: NSObject {
                                                  from: self.lastDateOfMonth)
         
         self.dates = Array(1...self.lastDayOfMonth)
+        
+        dateComponents.month! = self.month! + 2
+        
+        let lastDateOfNextMonth = calendar.date(from: dateComponents)!
+        
+        let lastDayOfNextMonth = calendar.component(.day, from: lastDateOfNextMonth)
+        
+        // print("Month: \(String(describing: self.month))")
+        
+        // print("Next Month \(lastDateOfNextMonth) \(lastDayOfNextMonth)")
+        
+        
+        self.nextMonthDates = Array(1...lastDayOfNextMonth)
+        
+        
+        dateComponents.day = 0
+        
+        dateComponents.month! = self.month!
+        
+        let lastDateOfPrevMonth = calendar.date(from: dateComponents)!
+        
+        let lastDayOfPrevMonth = calendar.component(.day, from: lastDateOfPrevMonth)
+        
+        // print("Prev Month \(lastDateOfPrevMonth) \(lastDayOfPrevMonth)")
+        
+        self.prevMonthDates = Array(1...lastDayOfPrevMonth)
         
         self.firstDayOfMonthWeekDay = calendar.component(.weekday, from: self.firstDateOfMonth)
         

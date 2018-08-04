@@ -181,6 +181,7 @@ class ClockView: NSView {
         self.timeSeconds = CGFloat(seconds)
         
         self.setNeedsDisplay(bounds)
+
     }
     
     func setTheme(theme: String)

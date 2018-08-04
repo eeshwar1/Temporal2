@@ -61,7 +61,7 @@ class CalendarView: NSView {
     
     func commonInit()
     {
-        Bundle.main.loadNibNamed(NSNib.Name(rawValue: "CalendarView"), owner: self, topLevelObjects: nil)
+        Bundle.main.loadNibNamed("CalendarView", owner: self, topLevelObjects: nil)
         
         // print("Frame: \(frame.size.width) x \(frame.size.height)")
         
@@ -74,6 +74,9 @@ class CalendarView: NSView {
         configureCollectionView()
         
         showDate()
+        
+        // print("First Day Week Day: \(self.calendarMonth.firstDayOfMonthWeekDay)")
+        
     }
     
     func showDate()
@@ -87,7 +90,7 @@ class CalendarView: NSView {
         self.todayMonth = calendar.component(.month, from: date)
         self.todayYear = calendar.component(.year, from: date)
         
-       
+        
         self.calendarMonth.setMonthAndYear(month: self.todayMonth,
                                            year: self.todayYear)
         
@@ -124,6 +127,8 @@ class CalendarView: NSView {
         collectionView.layer?.backgroundColor = NSColor.windowBackgroundColor.cgColor
     }
     
+    
+    
     // Actions
     
     @IBAction func clickNextMonth(_ sender: Any) {
@@ -153,6 +158,7 @@ class CalendarView: NSView {
         
         lblMonthName.stringValue = calendarMonth.monthAndYear
         
+     
     }
     
     
@@ -287,6 +293,8 @@ extension CalendarView: NSCollectionViewDataSource {
         
         var currentIndex: Int = 0
         
+        calendarDateItem.titleItem = false
+        
         // Title row
         if indexPath.section == 0
         {
@@ -298,7 +306,16 @@ extension CalendarView: NSCollectionViewDataSource {
             if indexPath.item < self.calendarMonth.firstDayOfMonthWeekDay - 1
             {
                 
-                calendarDateItem.dateText  = ""
+                let dateIndex = (self.calendarMonth.prevMonthDates.count - (self.calendarMonth.firstDayOfMonthWeekDay - indexPath.item - 1))
+                
+                // print("\(indexPath.item)  \(dateIndex)")
+                
+                let dateValue = self.calendarMonth.prevMonthDates[dateIndex]
+                
+                calendarDateItem.dateText  = "\(dateValue)"
+                
+             
+                calendarDateItem.otherMonthDate = true
             }
             else
             {
@@ -317,7 +334,6 @@ extension CalendarView: NSCollectionViewDataSource {
                 
             }
             
-            calendarDateItem.titleItem = false
         }
         else {
             
@@ -333,12 +349,14 @@ extension CalendarView: NSCollectionViewDataSource {
             {
                 calendarDateItem.dateText  = ""
             }
-            calendarDateItem.titleItem = false
+            
             
         }
         
+        
+        
         // Check for today's date and set flag for highlighting
-        if currentIndex <= self.calendarMonth.dates.count - 1
+        if currentIndex <= self.calendarMonth.dates.count - 1 && calendarDateItem.titleItem == false
         {
             if self.calendarMonth.dates[currentIndex] == self.todayDay &&
                 self.calendarMonth.month == self.todayMonth &&
@@ -350,6 +368,15 @@ extension CalendarView: NSCollectionViewDataSource {
             {
                 calendarDateItem.isToday = false
             }
+        }
+        
+        if currentIndex >= self.calendarMonth.dates.count
+        {
+            let dateIndex = currentIndex - self.calendarMonth.dates.count
+            
+            let dateValue = self.calendarMonth.nextMonthDates[dateIndex]
+            calendarDateItem.dateText = "\(dateValue)"
+            calendarDateItem.otherMonthDate = true
         }
         
         

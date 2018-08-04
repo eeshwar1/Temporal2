@@ -24,7 +24,7 @@ class PreferencesWindow: NSWindowController, NSComboBoxDelegate, NSWindowDelegat
     var delegate: PreferencesWindowDelegate?
     
     override var windowNibName: NSNib.Name?{
-        return NSNib.Name("PreferencesWindow")
+        return "PreferencesWindow"
         
     }
     override func windowDidLoad() {

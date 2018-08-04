@@ -50,7 +50,7 @@ class StatusMenuController: NSObject, PreferencesWindowDelegate {
     {
         
         let defaults = UserDefaults.standard
-        let icon = NSImage(named: NSImage.Name(rawValue: "Temporal-Icon"))
+        let icon = NSImage(named: "Temporal-Icon")
         // icon?.isTemplate = true
         statusItem.image = icon
         statusItem.menu = statusMenu
@@ -75,7 +75,7 @@ class StatusMenuController: NSObject, PreferencesWindowDelegate {
                                      repeats: true)
         
         // add timer to RunLoop for handling during event loops
-        RunLoop.current.add(timer, forMode: .eventTrackingRunLoopMode)
+        RunLoop.current.add(timer, forMode: RunLoop.Mode.eventTracking)
         
         preferencesWindow = PreferencesWindow()
         preferencesWindow.delegate = self

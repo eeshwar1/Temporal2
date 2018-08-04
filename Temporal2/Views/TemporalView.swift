@@ -16,7 +16,7 @@ class TemporalView: NSView {
     
     @IBOutlet weak var clockView: ClockView!
     
-    @IBOutlet weak var calendarView: CalendarView!
+    @IBOutlet var calendarView: CalendarView!
     
     
     required init?(coder decoder: NSCoder) {
@@ -43,6 +43,9 @@ class TemporalView: NSView {
         self.clockLabel.stringValue = time.timeString
         
         self.setNeedsDisplay(bounds)
+        
+        
+        self.calendarView.setNeedsDisplay(self.calendarView.bounds)
       
     }
     
