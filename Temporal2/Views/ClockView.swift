@@ -72,8 +72,8 @@ class ClockView: NSView {
 
         // Drawing code here.
         
-        // Clock Face is inset by 20
-        let clockFaceRect = bounds.insetBy(dx: CGFloat(20.0), dy: CGFloat(20.0))
+        // Clock Face is inset by 5
+        let clockFaceRect = bounds.insetBy(dx: CGFloat(5.0), dy: CGFloat(5.0))
         
         drawClockFace(clockFaceRect: clockFaceRect)
         

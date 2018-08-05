@@ -23,7 +23,7 @@ class TemporalView: NSView {
         
         super.init(coder: decoder)
      
-        self.calendarView = CalendarView(frame: NSMakeRect(0, 0, 300, 300))
+        self.calendarView = CalendarView()
     
     }
     
@@ -31,9 +31,11 @@ class TemporalView: NSView {
        
         super.init(frame: frameRect)
         
-        let cView = CalendarView(frame: NSMakeRect(0, 0, 300, 300))
+        let cView = CalendarView()
         
         self.calendarView.addSubview(cView)
+        
+        
     }
     
     func setTime(time: Time)
@@ -51,9 +53,8 @@ class TemporalView: NSView {
     
     func setTheme(theme: String)
     {
-        let defaults = UserDefaults.standard
-        let theme =  defaults.string(forKey: "Theme") ?? DEFAULT_THEME
         self.clockView.setTheme(theme: theme)
+        self.calendarView.setTheme(theme: theme)
     }
     
 }

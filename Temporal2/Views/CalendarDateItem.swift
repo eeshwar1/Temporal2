@@ -10,6 +10,15 @@ import Cocoa
 
 @IBDesignable class CalendarDateItem: NSCollectionViewItem {
     
+    var backColor: NSColor = NSColor.lightGray
+    var textColor: NSColor = NSColor.windowFrameTextColor
+    var titleTextColor: NSColor = NSColor.white
+    var borderColor: NSColor = NSColor.black
+    var highlightColor: NSColor = NSColor.orange
+    
+    
+    var theme = "Night"
+    
     var dateText: String = "" {
         didSet {
             guard isViewLoaded else { return }
@@ -25,7 +34,7 @@ import Cocoa
             
             if isToday
             {
-                self.textColor = NSColor.white
+                self.textColor = self.highlightColor
             }
         
             view.layer?.backgroundColor = self.backColor.cgColor
@@ -44,7 +53,11 @@ import Cocoa
             
             
             
-            self.textColor = otherMonthDate ? NSColor.disabledControlTextColor : NSColor.windowFrameTextColor
+            if otherMonthDate
+            {
+                self.textColor = NSColor.init(calibratedWhite: 1.0, alpha: 0.6)
+                
+            }
             
             view.layer?.backgroundColor = self.backColor.cgColor
             view.layer?.borderColor = self.borderColor.cgColor
@@ -54,32 +67,21 @@ import Cocoa
         
     }
 
-    var backColor: NSColor = NSColor.lightGray
-    var textColor: NSColor = NSColor.windowFrameTextColor
-    var borderColor: NSColor = NSColor.black
+
     
     @IBInspectable var titleItem: Bool = false
     {
         didSet {
           
-            if titleItem {
-                
-                (self.backColor,self.textColor) = (NSColor.orange
-                    , NSColor.windowFrameTextColor)
-            }
-            else
-            {
-                (self.backColor,self.textColor) = (NSColor.windowFrameColor
-                    , NSColor.windowFrameTextColor)
-                
-            }
-                
-            view.layer?.backgroundColor = self.backColor.cgColor
-            view.layer?.borderColor = self.borderColor.cgColor
-            view.layer?.borderWidth = 0.0
-            self.textField?.textColor = self.textColor
+                (self.backColor,self.textColor) = titleItem ? (self.highlightColor, self.titleTextColor): (self.backColor,self.textColor)
             
-        }
+                view.layer?.backgroundColor = self.backColor.cgColor
+                view.layer?.borderColor = self.borderColor.cgColor
+                view.layer?.borderWidth = 0.0
+                self.textField?.textColor = self.textColor
+                
+            }
+        
     }
     
 
@@ -93,6 +95,21 @@ import Cocoa
 
         
         
+    }
+    
+    func setTheme(theme: String)
+    
+    {
+        if let themeColors = CalendarView.calendarThemeColors[theme]
+        {
+            self.theme = theme
+            self.backColor = themeColors["backgroundColor"]!
+            self.textColor = themeColors["textColor"]!
+            self.titleTextColor =  themeColors["titleTextColor"]!
+            self.highlightColor = themeColors["highlightColor"]!
+    
+        }
+    
     }
     
 }

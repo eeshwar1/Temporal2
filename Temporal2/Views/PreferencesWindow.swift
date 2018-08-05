@@ -16,6 +16,7 @@ class PreferencesWindow: NSWindowController, NSComboBoxDelegate, NSWindowDelegat
    
     @IBOutlet weak var themeCombo: NSComboBox!
     @IBOutlet weak var clockView: ClockView!
+    @IBOutlet var calendarView: CalendarView!
     
     @IBOutlet weak var timeformatSegmentedControl: NSSegmentedControl!
     
@@ -49,6 +50,10 @@ class PreferencesWindow: NSWindowController, NSComboBoxDelegate, NSWindowDelegat
         
         self.clockView.setTheme(theme: theme)
         self.clockView.setTime(hours: 10, minutes: 10, seconds: 40)
+        
+        self.calendarView = CalendarView()
+        
+        self.calendarView.hideControls()
         
         self.window?.center()
         self.window?.makeKeyAndOrderFront(nil)
