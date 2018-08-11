@@ -15,6 +15,7 @@ import Cocoa
     var titleTextColor: NSColor = NSColor.white
     var borderColor: NSColor = NSColor.black
     var highlightColor: NSColor = NSColor.orange
+    var textHighlightColor: NSColor = NSColor.red
     
     
     var theme = "Night"
@@ -34,7 +35,8 @@ import Cocoa
             
             if isToday
             {
-                self.textColor = self.highlightColor
+                self.textColor = self.textHighlightColor
+                
             }
         
             view.layer?.backgroundColor = self.backColor.cgColor
@@ -107,6 +109,7 @@ import Cocoa
             self.textColor = themeColors["textColor"]!
             self.titleTextColor =  themeColors["titleTextColor"]!
             self.highlightColor = themeColors["highlightColor"]!
+            self.textHighlightColor = themeColors["textHighlightColor"]!
     
         }
     

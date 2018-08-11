@@ -24,6 +24,8 @@ class TemporalView: NSView {
         super.init(coder: decoder)
      
         self.calendarView = CalendarView()
+        
+        calendarView.hideControls()
     
     }
     

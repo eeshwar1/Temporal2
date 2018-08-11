@@ -103,6 +103,8 @@ class ClockView: NSView {
                                                y: centerPoint.y,
                                                radius: faceRadius)
         
+        
+        
         borderColor.setStroke()
         
         var angle: CGFloat = 0
@@ -127,13 +129,61 @@ class ClockView: NSView {
             marker.line(to: CGPoint(x: point.x , y: point.y))
             
             marker.stroke()
+            
             angle = angle + 6
+            
+     
             
         }
         
+        /*
+         
+         let textPoints = circleCircumferencePoints(sides: 60,
+         x: centerPoint.x,
+         y: centerPoint.y,
+         radius: faceRadius * 0.8,
+         adjustment: 270)
+         
+        let ctx = NSGraphicsContext.current?.cgContext
         
-      
+        ctx?.translateBy(x: 0.0, y: clockFaceRect.height)
         
+        ctx?.scaleBy(x: 1.0, y: -1.0)
+        
+        for (index, textPoint) in textPoints.enumerated()
+        {
+            let aFont = NSFont(name: "Optima", size: 2)
+            
+            let attr: CFDictionary =
+                [NSAttributedString.Key.font: aFont!, NSAttributedString.Key.foregroundColor: NSColor.white] as CFDictionary
+            
+            if index % 5 == 0
+                
+            {
+                let timeText = index / 5 + 1
+                
+                let text = CFAttributedStringCreate(nil, timeText.description as CFString, attr)
+                
+                print("timeText: \(timeText.description)")
+                
+                let line = CTLineCreateWithAttributedString(text!)
+                
+                let lineBounds = CTLineGetBoundsWithOptions(line, CTLineBoundsOptions.useOpticalBounds)
+                
+                ctx?.setLineWidth(2)
+                
+                ctx?.setTextDrawingMode(.stroke)
+                
+                let xn = textPoint.x - lineBounds.width / 2
+                let yn = textPoint.y - lineBounds.midY
+                
+                ctx?.textPosition = CGPoint(x: xn, y: yn)
+                
+                CTLineDraw(line, ctx!)
+            }
+        }
+        
+        */
         let hoursHand = NSBezierPath()
         let hoursAngle: CGFloat =  ((self.timeHours - 3)/12) * 360 + self.timeMinutes * 0.5
         let hoursHandEndPoint = CGPoint(x: clockFaceRect.midX + hoursHandLength *  cos(toRadians(degrees: hoursAngle)),

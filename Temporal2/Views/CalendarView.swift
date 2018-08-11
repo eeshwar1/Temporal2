@@ -27,23 +27,29 @@ class CalendarView: NSView {
     fileprivate var dayNames: [String] = ["Su","Mo","Tu","We","Th","Fr","Sa"]
     
     static let calendarThemeColors = ["Night": ["backgroundColor":
-        NSColor.black,
+                                                       NSColor.black,
                                                             "textColor": NSColor.white,
                                                             "titleTextColor":
                                                                 NSColor.white,
                                                             "highlightColor": NSColor.brown,
-        ],
+                                                            "textHighlightColor":
+                                                       NSColor.orange],
                                                   "Daylight": ["backgroundColor":        NSColor.lightGray,
                                                           "textColor": NSColor.black,
                                                           "titleTextColor":
-                                                    NSColor.white,
-                                                          "highlightColor": NSColor.orange],
+                                                       NSColor.white,
+                                                          "highlightColor": NSColor.red,
+                                                          "textHighlightColor":
+                                                            NSColor.red],
                                                   "Rainy":["backgroundColor":        NSColor.lightGray,
                                                            "textColor":
-                                                    NSColor.black,
+                                                      NSColor.black,
                                                            "titleTextColor":
-                                                    NSColor.white,
-                                                           "highlightColor": NSColor.purple,
+                                                      NSColor.white,
+                                                           "highlightColor":
+                                                      NSColor.purple,
+                                                           "textHighlightColor":
+                                                      NSColor.purple
                                                            ]]
     
 
@@ -62,8 +68,7 @@ class CalendarView: NSView {
     required init?(coder decoder: NSCoder) {
         
         super.init(coder: decoder)        
-        
-        // print("Init coder")
+       
         commonInit()
         
         
@@ -75,7 +80,6 @@ class CalendarView: NSView {
         
         super.init(frame: frameRect)
         
-        // print("Init frame")
         commonInit()
     }
     
@@ -94,9 +98,7 @@ class CalendarView: NSView {
         configureCollectionView()
         
         showDate()
-        
-        // print("First Day Week Day: \(self.calendarMonth.firstDayOfMonthWeekDay)")
-        
+
     }
     
     func hideControls()
