@@ -16,47 +16,46 @@ class TemporalView: NSView {
     
     @IBOutlet weak var clockView: ClockView!
     
-    @IBOutlet var calendarView: CalendarView!
+    @IBOutlet var calendarViewEx: CalendarViewEx!
+    
+    
     
     
     required init?(coder decoder: NSCoder) {
         
         super.init(coder: decoder)
      
-        self.calendarView = CalendarView()
-        
-        calendarView.hideControls()
+        self.calendarViewEx = CalendarViewEx()
+
     
     }
     
     required override init(frame frameRect: NSRect) {
        
         super.init(frame: frameRect)
+       
         
-        let cView = CalendarView()
-        
-        self.calendarView.addSubview(cView)
+        self.calendarViewEx = CalendarViewEx()
         
         
     }
     
     func setTime(time: Time)
     {
-        self.clockView.setTime(hours: time.hours, minutes: time.minutes, seconds: time.seconds)
-        
         self.clockLabel.stringValue = time.timeString
         
+        self.clockView.setTime(hours: time.hours, minutes: time.minutes, seconds: time.seconds)
+        
+        self.calendarViewEx.setToday()
+        
         self.setNeedsDisplay(bounds)
-        
-        
-        self.calendarView.setNeedsDisplay(self.calendarView.bounds)
       
     }
     
     func setTheme(theme: String)
     {
         self.clockView.setTheme(theme: theme)
-        self.calendarView.setTheme(theme: theme)
+        self.calendarViewEx.setTheme(theme: theme)
     }
     
 }

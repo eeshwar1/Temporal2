@@ -22,6 +22,7 @@ class ClockView: NSView {
     var timeMinutes: CGFloat = 0
     var timeSeconds: CGFloat = 0
     
+    
     var borderColor: NSColor = NSColor.yellow
     var backgroundColor: NSColor = NSColor.black
     var centerPinColor: NSColor = NSColor.gray
@@ -29,8 +30,18 @@ class ClockView: NSView {
     var hoursHandColor: NSColor = NSColor.green
     var minutesHandColor: NSColor = NSColor.orange
     var secondsHandColor: NSColor = NSColor.red
+ 
+
+    /*
+    var borderColor: NSColor
+    var backgroundColor: NSColor
+    var centerPinColor: NSColor
+    var centerPinBorderColor: NSColor
+    var hoursHandColor: NSColor
+    var minutesHandColor: NSColor
+    var secondsHandColor: NSColor */
     
-    var clockTheme: String = "Night"
+    var clockTheme: String = ""
 
     
     static fileprivate let clockThemeColors = ["Night": ["background":        NSColor.black,
@@ -61,10 +72,14 @@ class ClockView: NSView {
         return Array(clockThemeColors.keys).sorted()
     }
     
-    required init?(coder decoder: NSCoder) {
-        
+    required init?(coder decoder: NSCoder)
+    {
         super.init(coder: decoder)
-        self.setTheme(theme: "Night")
+        if self.clockTheme == ""
+        {
+            self.setTheme(theme: DEFAULT_THEME)
+        }
+        
     }
     override func draw(_ dirtyRect: NSRect) {
         
@@ -237,7 +252,7 @@ class ClockView: NSView {
     func setTheme(theme: String)
     {
         
-        if let themeColors = ClockView.clockThemeColors[clockTheme]
+        if let themeColors = ClockView.clockThemeColors[theme]
         {
             self.clockTheme = theme
             self.backgroundColor = themeColors["background"]!
