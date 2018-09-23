@@ -25,14 +25,13 @@ class StatusMenuController: NSObject {
     @IBOutlet weak var timeFormat24h: NSMenuItem!
     @IBOutlet weak var themeMenu: NSMenuItem!
     
-    
-    var preferencesWindow: PreferencesWindow!
-    
+    let kVersion: String = "CFBundleShortVersionString"
+    let kBuildNumber: String = "CFBundleVersion"
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     var timer = Timer()
-    
+ 
     let timeFormatter = DateFormatter()
     let dateFormatter = DateFormatter()
     
@@ -44,14 +43,26 @@ class StatusMenuController: NSObject {
         NSApplication.shared.terminate(self)
     }
     
+    func getVersion() -> String
+    {
+        let dictionary = Bundle.main.infoDictionary!
+        let version = dictionary[kVersion] as! String
+        let build = dictionary[kBuildNumber] as! String
+        
+        return "\(version)(\(build))"
+    }
+    
     override func awakeFromNib()
     {
         
         let defaults = UserDefaults.standard
         let icon = NSImage(named: "Temporal-Icon")
-        // icon?.isTemplate = true
+        icon?.isTemplate = true
         statusItem.image = icon
         statusItem.menu = statusMenu
+        
+        let appMenuItem = statusMenu.item(withTitle: "Temporal2")
+        appMenuItem?.title = "Temporal2 v\(getVersion())"
         
         temporalMenuItem = statusMenu.item(withTitle: "TemporalView")
         temporalMenuItem.view = temporalView
@@ -68,12 +79,15 @@ class StatusMenuController: NSObject {
         
         showTime()
         
-        // Negative value of timeInterval causes the timer to default to 0.1 ms
+        
+        // changing from -1 to be of one second
+        // Negative value of timeIntervalcauses the timer to default to 0.1 ms
         timer = Timer.scheduledTimer(timeInterval: -1,
                                      target: self,
                                      selector: #selector(showTime),
                                      userInfo: nil,
                                      repeats: true)
+        
         
         // add timer to RunLoop for handling during event loops
         RunLoop.current.add(timer, forMode: RunLoop.Mode.eventTracking)
@@ -82,7 +96,7 @@ class StatusMenuController: NSObject {
         let theme = defaults.string(forKey: "Theme") ?? DEFAULT_THEME
         self.temporalView.setTheme(theme: theme)
         
-        for themeName in CalendarView.calendarThemeColors.keys
+        for themeName in CalendarViewEx.calendarThemeColors.keys
         {
             self.themeMenu.submenu!.addItem(withTitle: themeName, action: #selector(themeChanged), keyEquivalent: "").target = self
            
@@ -100,12 +114,10 @@ class StatusMenuController: NSObject {
             }
         }
         
+        self.temporalView.calendarViewEx.showToday(self)
         
     }
-    
-    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-        return true
-    }
+
     
     @objc func showTime()
     {
@@ -124,7 +136,8 @@ class StatusMenuController: NSObject {
         
         temporalView.setTime(time: Time(hours: hours, minutes: minutes, seconds: seconds, timeString: currentTime))
         
-        updateWindow()
+     
+        
         
         
     }
@@ -161,6 +174,7 @@ class StatusMenuController: NSObject {
                 item.state = .off
             }
         }
+        updateWindow()
     }
     @IBAction func timeFormatChanged(_ sender: AnyObject)
     {
@@ -182,7 +196,7 @@ class StatusMenuController: NSObject {
         let defaults = UserDefaults.standard
         defaults.setValue(timeFormatStyle, forKey: "Time Format")
         
-        
+        updateWindow()
     }
 
 }
