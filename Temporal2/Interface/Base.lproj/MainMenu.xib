@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.3.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.3.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -66,45 +66,45 @@
             <point key="canvasLocation" x="-160.5" y="-77.5"/>
         </menu>
         <customView id="GhH-Eu-9u1" customClass="TemporalView" customModule="Temporal2" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="545" height="332"/>
+            <rect key="frame" x="0.0" y="0.0" width="563" height="332"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="9eG-01-wdX" customClass="ClockView" customModule="Temporal2" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="36" width="273" height="276"/>
+                    <rect key="frame" x="12" y="36" width="273" height="276"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="9eG-01-wdX" secondAttribute="height" multiplier="91:92" id="odW-p8-61K"/>
                     </constraints>
                 </customView>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="EE9-8s-Kua" customClass="CalendarView" customModule="Temporal2" customModuleProvider="target">
-                    <rect key="frame" x="275" y="20" width="250" height="292"/>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="EE9-8s-Kua" customClass="CalendarViewEx" customModule="Temporal2" customModuleProvider="target">
+                    <rect key="frame" x="293" y="20" width="250" height="280"/>
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DIe-6O-xzW">
-                    <rect key="frame" x="81" y="12" width="111" height="25"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="TimeLabel" id="Oe2-Ju-TIE">
-                        <font key="font" size="15" name="AvenirNextCondensed-Bold"/>
+                    <rect key="frame" x="14" y="9" width="269" height="29"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="hh:mm:ss AM" id="Oe2-Ju-TIE">
+                        <font key="font" size="20" name="CourierNewPS-BoldMT"/>
                         <color key="textColor" name="windowFrameTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstItem="EE9-8s-Kua" firstAttribute="leading" secondItem="9eG-01-wdX" secondAttribute="trailing" constant="2" id="1HX-IP-GWy"/>
-                <constraint firstItem="EE9-8s-Kua" firstAttribute="leading" secondItem="DIe-6O-xzW" secondAttribute="trailing" constant="85" id="38L-cb-KIP"/>
-                <constraint firstItem="EE9-8s-Kua" firstAttribute="centerY" secondItem="GhH-Eu-9u1" secondAttribute="centerY" id="LpD-36-O1x"/>
-                <constraint firstItem="9eG-01-wdX" firstAttribute="leading" secondItem="GhH-Eu-9u1" secondAttribute="leading" id="Nlg-Du-9Os"/>
-                <constraint firstItem="EE9-8s-Kua" firstAttribute="top" secondItem="GhH-Eu-9u1" secondAttribute="top" constant="20" id="QXf-rK-1vX"/>
-                <constraint firstItem="EE9-8s-Kua" firstAttribute="leading" secondItem="GhH-Eu-9u1" secondAttribute="leading" constant="275" id="Qh0-bV-MP2"/>
+                <constraint firstItem="EE9-8s-Kua" firstAttribute="leading" secondItem="9eG-01-wdX" secondAttribute="trailing" constant="8" id="1HX-IP-GWy"/>
+                <constraint firstItem="EE9-8s-Kua" firstAttribute="leading" secondItem="DIe-6O-xzW" secondAttribute="trailing" constant="12" id="38L-cb-KIP"/>
+                <constraint firstItem="EE9-8s-Kua" firstAttribute="centerY" secondItem="GhH-Eu-9u1" secondAttribute="centerY" constant="6" id="LpD-36-O1x"/>
+                <constraint firstItem="9eG-01-wdX" firstAttribute="leading" secondItem="GhH-Eu-9u1" secondAttribute="leading" constant="12" id="Nlg-Du-9Os"/>
+                <constraint firstItem="EE9-8s-Kua" firstAttribute="top" secondItem="GhH-Eu-9u1" secondAttribute="top" constant="32" id="QXf-rK-1vX"/>
+                <constraint firstItem="EE9-8s-Kua" firstAttribute="leading" secondItem="GhH-Eu-9u1" secondAttribute="leading" constant="293" id="Qh0-bV-MP2"/>
                 <constraint firstItem="DIe-6O-xzW" firstAttribute="centerX" secondItem="9eG-01-wdX" secondAttribute="centerX" id="Udf-cC-R0n"/>
                 <constraint firstAttribute="trailing" secondItem="EE9-8s-Kua" secondAttribute="trailing" constant="20" id="aLt-ht-FFW"/>
                 <constraint firstItem="9eG-01-wdX" firstAttribute="top" secondItem="GhH-Eu-9u1" secondAttribute="top" constant="20" id="ohZ-u9-McX"/>
-                <constraint firstAttribute="bottom" secondItem="DIe-6O-xzW" secondAttribute="bottom" constant="12" id="sxk-fR-stK"/>
+                <constraint firstAttribute="bottom" secondItem="DIe-6O-xzW" secondAttribute="bottom" constant="9" id="sxk-fR-stK"/>
             </constraints>
             <connections>
-                <outlet property="calendarView" destination="EE9-8s-Kua" id="ZZr-WD-kfm"/>
+                <outlet property="calendarViewEx" destination="EE9-8s-Kua" id="fcm-xK-bK2"/>
                 <outlet property="clockLabel" destination="DIe-6O-xzW" id="X30-15-Nge"/>
                 <outlet property="clockView" destination="9eG-01-wdX" id="0AG-RA-90N"/>
             </connections>
-            <point key="canvasLocation" x="44.5" y="209"/>
+            <point key="canvasLocation" x="53.5" y="209"/>
         </customView>
         <menuItem title="Item" id="HhK-M6-Miy">
             <modifierMask key="keyEquivalentModifierMask"/>
