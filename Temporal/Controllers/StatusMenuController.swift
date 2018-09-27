@@ -61,8 +61,8 @@ class StatusMenuController: NSObject {
         statusItem.image = icon
         statusItem.menu = statusMenu
         
-        let appMenuItem = statusMenu.item(withTitle: "Temporal2")
-        appMenuItem?.title = "Temporal2 v\(getVersion())"
+        let appMenuItem = statusMenu.item(withTitle: "Temporal")
+        appMenuItem?.title = "Temporal v\(getVersion())"
         
         temporalMenuItem = statusMenu.item(withTitle: "TemporalView")
         temporalMenuItem.view = temporalView

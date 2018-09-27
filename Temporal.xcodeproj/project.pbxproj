@@ -29,12 +29,12 @@
 		657BD1E9211F7A1000966D93 /* CalendarViewEx.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarViewEx.xib; sourceTree = "<group>"; };
 		657BD1EA211F7A1000966D93 /* CalendarViewEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewEx.swift; sourceTree = "<group>"; };
 		65D340B7212BA0D700B61756 /* TemporalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemporalView.swift; sourceTree = "<group>"; };
-		65E5500D2104AB6700FE56B5 /* Temporal2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Temporal2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		65E5500D2104AB6700FE56B5 /* Temporal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Temporal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65E550102104AB6700FE56B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65E550122104AB6800FE56B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65E550152104AB6800FE56B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		65E550172104AB6800FE56B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		65E550182104AB6800FE56B5 /* Temporal2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Temporal2.entitlements; sourceTree = "<group>"; };
+		65E550182104AB6800FE56B5 /* Temporal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Temporal.entitlements; sourceTree = "<group>"; };
 		65E5501F2104B00A00FE56B5 /* ClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
 		65E550242104B0E700FE56B5 /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,7 +91,7 @@
 		65E550042104AB6700FE56B5 = {
 			isa = PBXGroup;
 			children = (
-				65E5500F2104AB6700FE56B5 /* Temporal2 */,
+				65E5500F2104AB6700FE56B5 /* Temporal */,
 				65E5500E2104AB6700FE56B5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,12 +99,12 @@
 		65E5500E2104AB6700FE56B5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				65E5500D2104AB6700FE56B5 /* Temporal2.app */,
+				65E5500D2104AB6700FE56B5 /* Temporal.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		65E5500F2104AB6700FE56B5 /* Temporal2 */ = {
+		65E5500F2104AB6700FE56B5 /* Temporal */ = {
 			isa = PBXGroup;
 			children = (
 				65E550102104AB6700FE56B5 /* AppDelegate.swift */,
@@ -114,17 +114,17 @@
 				654CD0882107544600F6FFE3 /* Views */,
 				65E550122104AB6800FE56B5 /* Assets.xcassets */,
 				65E550172104AB6800FE56B5 /* Info.plist */,
-				65E550182104AB6800FE56B5 /* Temporal2.entitlements */,
+				65E550182104AB6800FE56B5 /* Temporal.entitlements */,
 			);
-			path = Temporal2;
+			path = Temporal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		65E5500C2104AB6700FE56B5 /* Temporal2 */ = {
+		65E5500C2104AB6700FE56B5 /* Temporal */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 65E5501B2104AB6800FE56B5 /* Build configuration list for PBXNativeTarget "Temporal2" */;
+			buildConfigurationList = 65E5501B2104AB6800FE56B5 /* Build configuration list for PBXNativeTarget "Temporal" */;
 			buildPhases = (
 				65E550092104AB6700FE56B5 /* Sources */,
 				65E5500A2104AB6700FE56B5 /* Frameworks */,
@@ -134,9 +134,9 @@
 			);
 			dependencies = (
 			);
-			name = Temporal2;
+			name = Temporal;
 			productName = Temporal2;
-			productReference = 65E5500D2104AB6700FE56B5 /* Temporal2.app */;
+			productReference = 65E5500D2104AB6700FE56B5 /* Temporal.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -155,7 +155,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 65E550082104AB6700FE56B5 /* Build configuration list for PBXProject "Temporal2" */;
+			buildConfigurationList = 65E550082104AB6700FE56B5 /* Build configuration list for PBXProject "Temporal" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -168,7 +168,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				65E5500C2104AB6700FE56B5 /* Temporal2 */,
+				65E5500C2104AB6700FE56B5 /* Temporal */,
 			);
 		};
 /* End PBXProject section */
@@ -334,17 +334,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Temporal2/Temporal2.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Temporal/Temporal.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 74757A785Z;
-				INFOPLIST_FILE = Temporal2/Info.plist;
+				INFOPLIST_FILE = Temporal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.venkyul.Temporal2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.venkyul.Temporal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_BUILDER = Easwar;
@@ -355,17 +357,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Temporal2/Temporal2.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Temporal/Temporal.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 74757A785Z;
-				INFOPLIST_FILE = Temporal2/Info.plist;
+				INFOPLIST_FILE = Temporal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.venkyul.Temporal2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.venkyul.Temporal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_BUILDER = Easwar;
@@ -375,7 +379,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		65E550082104AB6700FE56B5 /* Build configuration list for PBXProject "Temporal2" */ = {
+		65E550082104AB6700FE56B5 /* Build configuration list for PBXProject "Temporal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				65E550192104AB6800FE56B5 /* Debug */,
@@ -384,7 +388,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		65E5501B2104AB6800FE56B5 /* Build configuration list for PBXNativeTarget "Temporal2" */ = {
+		65E5501B2104AB6800FE56B5 /* Build configuration list for PBXNativeTarget "Temporal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				65E5501C2104AB6800FE56B5 /* Debug */,
