@@ -20,6 +20,8 @@ import Cocoa
     
     var theme = "Night"
     
+ 
+
     var dateText: String = "" {
         didSet {
             guard isViewLoaded else { return }
@@ -42,12 +44,11 @@ import Cocoa
             view.layer?.backgroundColor = self.backColor.cgColor
             view.layer?.borderColor = self.borderColor.cgColor
             self.textField?.textColor = self.textColor
-            
         }
     }
     
     
-  
+
     
     var otherMonthDate: Bool = false
     {
@@ -81,6 +82,11 @@ import Cocoa
                 view.layer?.borderColor = self.borderColor.cgColor
                 view.layer?.borderWidth = 0.0
                 self.textField?.textColor = self.textColor
+            
+            
+            
+    
+            
                 
             }
         
@@ -95,14 +101,31 @@ import Cocoa
         
         view.layer?.cornerRadius = view.frame.height / 20
 
+    
+        let trackingArea = NSTrackingArea(rect: self.view.bounds, options: [.activeInActiveApp, .mouseEnteredAndExited, .mouseMoved], owner: self, userInfo: nil)
+        self.view.addTrackingArea(trackingArea)
         
+     
+        
+        
+        
+    }
+    
+    override func mouseEntered(with event: NSEvent) {
+        view.layer?.backgroundColor = NSColor.yellow.cgColor
+        self.textField?.textColor = NSColor.black
+    }
+    
+    override func mouseExited(with event: NSEvent) {
+        view.layer?.backgroundColor = self.backColor.cgColor
+         self.textField?.textColor = self.textColor
         
     }
     
     func setTheme(theme: String)
     
     {
-        if let themeColors = CalendarView.calendarThemeColors[theme]
+        if let themeColors = CalendarViewEx.calendarThemeColors[theme]
         {
             self.theme = theme
             self.backColor = themeColors["backgroundColor"]!
